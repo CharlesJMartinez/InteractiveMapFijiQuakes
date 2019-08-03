@@ -1,0 +1,20 @@
+---
+title: "Interacive Map: Fiji Earthquakes"
+author: "Carlos Martinez"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+require(leaflet)
+require(dataset)
+```
+
+## August 3, 2019
+
+
+```{r messages=FALSE,echo=FALSE,warning=FALSE, error=FALSE}
+quakemag <- paste("Magnitude:",quakes$mag)
+quakes %>% leaflet() %>% addTiles() %>% addMarkers(lng=~long, lat = ~lat,clusterOptions=markerClusterOptions(),popup=quakemag)
+```
+
